@@ -24,7 +24,7 @@ const socialLinks = [
 
 <template>
 	<header>
-		<nav class="flex space-x-8 items-center">
+		<nav class="h-16 flex space-x-8 items-center">
 			<RouterLink
 				v-for="link in websiteLinks"
 				:to="link.path"

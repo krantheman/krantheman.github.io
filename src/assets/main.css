@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@layer base {
+	h1 {
+		@apply text-4xl font-bold leading-14 mb-2;
+	}
+
+	h2 {
+		@apply text-3xl font-bold leading-12 mb-2;
+	}
+
+	h3 {
+		@apply text-2xl font-semibold leading-10 mb-2;
+	}
+
+	h4 {
+		@apply text-xl font-medium leading-9 mb-2;
+	}
+
+	h5 {
+		@apply text-lg font-medium leading-8 mb-2;
+	}
+
+	h6 {
+		@apply text-base font-thin leading-7 mb-2;
+	}
+}
