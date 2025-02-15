@@ -1,12 +1,10 @@
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
 import Github from "./icons/Github.vue";
 import Instagram from "./icons/Instagram.vue";
 import Linkedin from "./icons/Linkedin.vue";
 import Telegram from "./icons/Telegram.vue";
 import Email from "./icons/Email.vue";
-
-const route = useRoute();
 
 const websiteLinks = [
 	{ name: "Home", path: "/" },
@@ -31,7 +29,9 @@ const socialLinks = [
 				v-for="link in websiteLinks"
 				:to="link.path"
 				class="hover:text-sky-200 font-medium text-lg"
-				:class="{ 'text-sky-200': route.name === link.name }"
+				:class="{
+					'text-sky-200': $route.path.split('/')[1] === link.path.slice(1),
+				}"
 			>
 				{{ link.name }}
 			</RouterLink>

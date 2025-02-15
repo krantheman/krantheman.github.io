@@ -6,22 +6,27 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "Home",
-			component: () => import("../views/HomeView.vue"),
+			component: () => import("./views/HomeView.vue"),
 		},
 		{
 			path: "/blogs",
 			name: "Blogs",
-			component: () => import("../views/AboutView.vue"),
+			component: () => import("./views/BlogsView.vue"),
+		},
+		{
+			path: "/blogs/:name",
+			name: "Blog",
+			component: () => import("./views/BlogView.vue"),
 		},
 		{
 			path: "/gallery",
 			name: "Gallery",
-			component: () => import("../views/AboutView.vue"),
+			component: () => import("./views/AboutView.vue"),
 		},
 		{
 			path: "/about",
 			name: "About",
-			component: () => import("../views/AboutView.vue"),
+			component: () => import("./views/AboutView.vue"),
 		},
 	],
 });
