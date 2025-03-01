@@ -24,27 +24,28 @@ const socialLinks = [
 
 <template>
 	<header>
-		<nav class="h-16 flex space-x-8 items-center">
+		<nav class="h-12 flex space-x-8 items-end">
 			<RouterLink
 				v-for="link in websiteLinks"
 				:to="link.path"
-				class="hover:text-sky-200 font-medium text-lg"
+				class="font-medium"
 				:class="{
-					'text-sky-200': $route.path.split('/')[1] === link.path.slice(1),
+					'!no-underline': $route.path.split('/')[1] !== link.path.slice(1),
 				}"
 			>
 				{{ link.name }}
 			</RouterLink>
-			<div class="mx-auto" />
+			<div class="mx-auto hidden sm:block" />
 			<a
 				v-for="link in socialLinks"
 				:href="link.href"
 				target="_blank"
 				rel="noopener"
+				class="hidden sm:block"
 			>
 				<component
 					:is="link.icon"
-					class="h-5 w-5 fill-gray-200 hover:fill-sky-200"
+					class="h-4.5 w-4.5 fill-gray-300 hover:fill-sky-300"
 				/>
 			</a>
 		</nav>

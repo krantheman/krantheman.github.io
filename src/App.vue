@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar.vue";
 
 <template>
 	<NavBar />
-	<main class="py-8">
+	<main class="my-8">
 		<RouterView />
 	</main>
 </template>
