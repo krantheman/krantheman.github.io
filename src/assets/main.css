@@ -22,7 +22,7 @@
 	}
 
 	h6 {
-		@apply text-sm font-extralight;
+		@apply text-sm font-extralight text-gray-400;
 	}
 
 	h1,
