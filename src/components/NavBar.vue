@@ -1,10 +1,10 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import Github from "./icons/Github.vue";
-import Instagram from "./icons/Instagram.vue";
-import Linkedin from "./icons/Linkedin.vue";
-import Telegram from "./icons/Telegram.vue";
-import Email from "./icons/Email.vue";
+import Github from "@/components/icons/Github.vue";
+import Instagram from "@/components/icons/Instagram.vue";
+import Linkedin from "@/components/icons/Linkedin.vue";
+import Telegram from "@/components/icons/Telegram.vue";
+import Email from "@/components/icons/Email.vue";
 
 const websiteLinks = [
 	{ name: "Home", path: "/" },
@@ -45,7 +45,7 @@ const socialLinks = [
 			>
 				<component
 					:is="link.icon"
-					class="h-4.5 w-4.5 fill-gray-300 hover:fill-sky-300"
+					class="h-4.5 w-4.5 fill-gray-200 hover:fill-sky-200"
 				/>
 			</a>
 		</nav>

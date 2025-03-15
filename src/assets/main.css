@@ -2,7 +2,7 @@
 
 @layer base {
 	h1 {
-		@apply text-4xl font-bold mt-8;
+		@apply text-4xl text-sky-200 font-bold mt-8;
 	}
 
 	h2 {
@@ -50,5 +50,18 @@
 }
 
 a {
-	@apply underline underline-offset-2 decoration-sky-300 hover:text-sky-300;
+	@apply underline underline-offset-2 decoration-sky-200 hover:text-sky-200;
+}
+
+em,
+strong {
+	@apply text-sky-200;
+}
+
+strong {
+	@apply font-medium;
+}
+
+blockquote {
+	@apply border-l-4 border-sky-200 pl-4 italic;
 }
