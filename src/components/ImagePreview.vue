@@ -138,7 +138,7 @@ const handleTouchEnd = (event) => {
 		</button>
 
 		<div class="flex flex-col h-full w-full">
-			<div class="flex-1 flex items-center justify-center h-0 flex-grow m-4">
+			<div class="flex-1 flex items-center justify-center h-0 flex-grow sm:m-4">
 				<img
 					v-if="selectedImage"
 					:src="selectedImage.src"

@@ -143,9 +143,13 @@ const getDate = (date) => {
 					loading="lazy"
 				/>
 
-				<div class="absolute bottom-0 left-0 p-4">
-					<h4 class="!my-0">{{ group.id }}</h4>
-					<span class="text-sm">{{ group.images.length }} items</span>
+				<div
+					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 to-transparent"
+				>
+					<h5 class="!my-0 sm:text-base">{{ group.id }}</h5>
+					<span class="text-sm sm:text-xs">
+						{{ group.images.length }} items
+					</span>
 				</div>
 			</div>
 		</div>
