@@ -122,13 +122,13 @@ const handleTouchEnd = (event) => {
 
 <template>
 	<div
-		class="fixed inset-0 flex items-center justify-center z-50 bg-black"
+		class="fixed inset-0 flex z-50 bg-black"
 		@click="closePreview"
 		@touchstart="handleTouchStart"
 		@touchend="handleTouchEnd"
 	>
 		<button
-			class="fixed left-4 top-1/2 transform -translate-y-1/2 p-3 cursor-pointer hidden sm:block"
+			class="cursor-pointer hidden sm:block ml-4 self-center"
 			@click.stop="prevImage"
 			aria-label="Previous image"
 			:disabled="isFirstImage"
@@ -137,8 +137,28 @@ const handleTouchEnd = (event) => {
 			<ChevronLeft class="h-6 w-6" />
 		</button>
 
+		<div class="relative w-full h-full flex flex-col">
+			<div class="flex-1 flex flex-col justify-center overflow-hidden sm:m-4">
+				<img
+					v-if="selectedImage"
+					:src="selectedImage.src"
+					:alt="selectedImage.alt"
+					class="max-h-full max-w-full object-contain"
+					@click.stop
+					loading="lazy"
+				/>
+			</div>
+
+			<p v-if="selectedGroup" class="!mt-0 flex justify-center bg-green">
+				{{ selectedGroup.id }}
+				<span class="text-gray-400 font-extralight ml-1">
+					({{ previewIdx.image + 1 }}/{{ selectedGroup.images.length }})
+				</span>
+			</p>
+		</div>
+
 		<button
-			class="fixed right-4 top-1/2 transform -translate-y-1/2 p-3 cursor-pointer hidden sm:block"
+			class="cursor-pointer hidden sm:block mr-4 self-center"
 			@click.stop="nextImage"
 			aria-label="Next image"
 			:disabled="isLastImage"
@@ -146,21 +166,5 @@ const handleTouchEnd = (event) => {
 		>
 			<ChevronRight class="h-6 w-6" />
 		</button>
-
-		<p v-if="selectedGroup" class="fixed top-4 flex justify-center !my-0">
-			{{ selectedGroup.id }}
-		</p>
-
-		<div v-if="selectedGroup" class="fixed bottom-4 left-1/2 text-sm">
-			{{ previewIdx.image + 1 }} / {{ selectedGroup.images.length }}
-		</div>
-
-		<img
-			v-if="selectedImage"
-			:src="selectedImage.src"
-			:alt="selectedImage.alt"
-			class="sm:max-w-[88%] max-h-[88vh] block"
-			@click.stop
-		/>
 	</div>
 </template>
