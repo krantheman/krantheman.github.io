@@ -134,22 +134,21 @@ const handleTouchEnd = (event) => {
 			:disabled="isFirstImage"
 			:class="{ 'opacity-50 !cursor-default': isFirstImage }"
 		>
-			<ChevronLeft class="h-6 w-6" />
+			<ChevronLeft class="h-8 w-8" />
 		</button>
 
-		<div class="relative w-full h-full flex flex-col">
-			<div class="flex-1 flex flex-col justify-center overflow-hidden sm:m-4">
+		<div class="flex flex-col h-full w-full">
+			<div class="flex-1 flex items-center justify-center h-0 flex-grow m-4">
 				<img
 					v-if="selectedImage"
 					:src="selectedImage.src"
 					:alt="selectedImage.alt"
-					class="max-h-full max-w-full object-contain"
-					@click.stop
 					loading="lazy"
+					class="max-h-full max-w-full"
+					@click.stop
 				/>
 			</div>
-
-			<p v-if="selectedGroup" class="!mt-0 flex justify-center bg-green">
+			<p v-if="selectedGroup" class="flex justify-center">
 				{{ selectedGroup.id }}
 				<span class="text-gray-400 font-extralight ml-1">
 					({{ previewIdx.image + 1 }}/{{ selectedGroup.images.length }})
@@ -164,7 +163,7 @@ const handleTouchEnd = (event) => {
 			:disabled="isLastImage"
 			:class="{ 'opacity-50 !cursor-default': isLastImage }"
 		>
-			<ChevronRight class="h-6 w-6" />
+			<ChevronRight class="h-8 w-8" />
 		</button>
 	</div>
 </template>
