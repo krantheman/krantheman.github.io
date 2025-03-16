@@ -1,7 +1,14 @@
 <script setup>
 import ChevronLeft from "@/components/icons/ChevronLeft.vue";
 import ChevronRight from "@/components/icons/ChevronRight.vue";
-import { ref, reactive, onMounted, onBeforeUnmount, watch } from "vue";
+import {
+	computed,
+	ref,
+	reactive,
+	onMounted,
+	onBeforeUnmount,
+	watch,
+} from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
@@ -67,26 +74,61 @@ const updateUrl = (albumIdx, groupIdx, imageIdx) => {
 };
 
 const nextImage = () => {
-	const currentGroup = albums.value[currentIdx.album].groups[currentIdx.group];
-	if (currentIdx.image >= currentGroup.images.length - 1) return;
+	const album = albums.value[currentIdx.album];
+	const group = album.groups[currentIdx.group];
 
-	currentIdx.image++;
-	selectedImage.value = currentGroup.images[currentIdx.image];
+	if (currentIdx.image < group.images.length - 1) currentIdx.image++;
+	else if (currentIdx.group < album.groups.length - 1) {
+		currentIdx.group++;
+		currentIdx.image = 0;
+	} else if (currentIdx.album < albums.value.length - 1) {
+		currentIdx.album++;
+		currentIdx.group = 0;
+		currentIdx.image = 0;
+	} else return;
 
+	const newAlbum = albums.value[currentIdx.album];
+	selectedGroup.value = newAlbum.groups[currentIdx.group];
+	selectedImage.value = selectedGroup.value.images[currentIdx.image];
 	updateUrl(currentIdx.album, currentIdx.group, currentIdx.image);
 };
 
 const prevImage = () => {
-	if (currentIdx.image <= 0) return;
+	if (currentIdx.image > 0) currentIdx.image--;
+	else if (currentIdx.group > 0) {
+		currentIdx.group--;
+		selectedGroup.value =
+			albums.value[currentIdx.album].groups[currentIdx.group];
+		currentIdx.image = selectedGroup.value.images.length - 1;
+	} else if (currentIdx.album > 0) {
+		currentIdx.album--;
+		const prevAlbum = albums.value[currentIdx.album];
+		currentIdx.group = prevAlbum.groups.length - 1;
+		selectedGroup.value = prevAlbum.groups[currentIdx.group];
+		currentIdx.image = selectedGroup.value.images.length - 1;
+	} else return;
 
-	currentIdx.image--;
-	selectedImage.value =
-		albums.value[currentIdx.album].groups[currentIdx.group].images[
-			currentIdx.image
-		];
-
+	selectedImage.value = selectedGroup.value.images[currentIdx.image];
 	updateUrl(currentIdx.album, currentIdx.group, currentIdx.image);
 };
+
+const isFirstImage = computed(
+	() =>
+		currentIdx.album === 0 && currentIdx.group === 0 && currentIdx.image === 0,
+);
+
+const isLastImage = computed(() => {
+	const lastAlbumIdx = albums.value.length - 1;
+	const lastGroupIdx = albums.value[lastAlbumIdx].groups.length - 1;
+	const lastImageIdx =
+		albums.value[lastAlbumIdx].groups[lastGroupIdx].images.length - 1;
+
+	return (
+		currentIdx.album === lastAlbumIdx &&
+		currentIdx.group === lastGroupIdx &&
+		currentIdx.image === lastImageIdx
+	);
+});
 
 const handleKeydown = (event) => {
 	if (event.key === "Escape") closePreview();
@@ -228,9 +270,7 @@ const handleTouchEnd = (event) => {
 					loading="lazy"
 				/>
 
-				<div
-					class="absolute bottom-0 left-0 p-4 duration-300 ease-in-out group-hover:bottom-0.5"
-				>
+				<div class="absolute bottom-0 left-0 p-4">
 					<h4 class="!my-0">{{ group.id }}</h4>
 					<span class="text-sm">{{ group.images.length }} items</span>
 				</div>
@@ -246,29 +286,26 @@ const handleTouchEnd = (event) => {
 		@touchend="handleTouchEnd"
 	>
 		<button
-			class="fixed left-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer hidden sm:block"
+			class="fixed left-4 top-1/2 transform -translate-y-1/2 p-3 cursor-pointer hidden sm:block"
 			@click.stop="prevImage"
 			aria-label="Previous image"
-			:disabled="currentIdx.image === 0"
-			:class="{ 'opacity-50 !cursor-default': currentIdx.image === 0 }"
+			:disabled="isFirstImage"
+			:class="{ 'opacity-50 !cursor-default': isFirstImage }"
 		>
 			<ChevronLeft class="h-6 w-6" />
 		</button>
 
 		<button
-			class="fixed right-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer hidden sm:block"
+			class="fixed right-4 top-1/2 transform -translate-y-1/2 p-3 cursor-pointer hidden sm:block"
 			@click.stop="nextImage"
 			aria-label="Next image"
-			:disabled="currentIdx.image === selectedGroup.images.length - 1"
-			:class="{
-				'opacity-50 !cursor-default':
-					currentIdx.image === selectedGroup.images.length - 1,
-			}"
+			:disabled="isLastImage"
+			:class="{ 'opacity-50 !cursor-default': isLastImage }"
 		>
 			<ChevronRight class="h-6 w-6" />
 		</button>
 
-		<p class="fixed top-4 left-0 right-0 flex justify-center !my-0">
+		<p class="fixed top-4 flex justify-center !my-0">
 			{{ selectedGroup.id }}
 		</p>
 
@@ -280,7 +317,7 @@ const handleTouchEnd = (event) => {
 			v-if="selectedImage"
 			:src="selectedImage.src"
 			:alt="selectedImage.alt"
-			class="sm:max-w-[87%] max-h-[87vh] block"
+			class="sm:max-w-[88%] max-h-[88vh] block"
 			@click.stop
 		/>
 	</div>
