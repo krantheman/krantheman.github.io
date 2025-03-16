@@ -8,10 +8,8 @@ const route = useRoute();
 const router = useRouter();
 
 const albums = ref([]);
-
 const selectedGroup = ref(null);
 const selectedImage = ref(null);
-
 const currentIdx = reactive({ album: 0, group: 0, image: 0 });
 
 const findImageIndices = (image) => {
@@ -187,6 +185,26 @@ const getDate = (date) => {
 	const monthIndex = parseInt(month, 10) - 1;
 	return `${monthNames[monthIndex]} 20${year}`;
 };
+
+const touchStartX = ref(0);
+const isZooming = ref(false);
+
+const handleTouchStart = (event) => {
+	if (event.touches.length >= 2) return (isZooming.value = true);
+
+	isZooming.value = false;
+	touchStartX.value = event.touches[0].clientX;
+};
+
+const handleTouchEnd = (event) => {
+	if (isZooming.value) return setTimeout(() => (isZooming.value = false), 500);
+
+	const swipeDistance = event.changedTouches[0].clientX - touchStartX.value;
+	if (Math.abs(swipeDistance) < 50) return;
+
+	if (swipeDistance > 0) prevImage();
+	else nextImage();
+};
 </script>
 
 <template>
@@ -200,7 +218,7 @@ const getDate = (date) => {
 			<div
 				v-for="group in album.groups"
 				:key="group.id"
-				class="cursor-pointer overflow-hidden rounded-md aspect-6/5 relative group"
+				class="cursor-pointer overflow-hidden rounded-md aspect-3/2 relative group"
 				@click="openPreview(group)"
 			>
 				<img
@@ -224,9 +242,11 @@ const getDate = (date) => {
 		v-if="selectedGroup && selectedImage"
 		class="fixed inset-0 flex items-center justify-center z-50 bg-black"
 		@click="closePreview"
+		@touchstart="handleTouchStart"
+		@touchend="handleTouchEnd"
 	>
 		<button
-			class="fixed left-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer"
+			class="fixed left-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer hidden sm:block"
 			@click.stop="prevImage"
 			aria-label="Previous image"
 			:disabled="currentIdx.image === 0"
@@ -236,7 +256,7 @@ const getDate = (date) => {
 		</button>
 
 		<button
-			class="fixed right-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer"
+			class="fixed right-4 top-1/2 transform -translate-y-1/2 rounded-full p-3 cursor-pointer hidden sm:block"
 			@click.stop="nextImage"
 			aria-label="Next image"
 			:disabled="currentIdx.image === selectedGroup.images.length - 1"
@@ -260,7 +280,7 @@ const getDate = (date) => {
 			v-if="selectedImage"
 			:src="selectedImage.src"
 			:alt="selectedImage.alt"
-			class="max-w-[87%] max-h-[87vh] block"
+			class="sm:max-w-[87%] max-h-[87vh] block"
 			@click.stop
 		/>
 	</div>
