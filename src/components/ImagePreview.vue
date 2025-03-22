@@ -1,7 +1,7 @@
 <script setup>
 import ChevronLeft from "@/components/icons/ChevronLeft.vue";
 import ChevronRight from "@/components/icons/ChevronRight.vue";
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 
 const { albums, previewIdx } = defineProps({
 	albums: {
@@ -18,6 +18,7 @@ const emit = defineEmits(["updateUrl", "close"]);
 
 const selectedGroup = ref(null);
 const selectedImage = ref(null);
+const isLoading = ref(true);
 
 onMounted(() => {
 	const album = albums[previewIdx.album];
@@ -31,6 +32,10 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => document.removeEventListener("keydown", handleKeydown));
+
+watch(selectedImage, () => {
+	isLoading.value = true;
+});
 
 const nextImage = () => {
 	const album = albums[previewIdx.album];
@@ -139,12 +144,17 @@ const handleTouchEnd = (event) => {
 
 		<div class="flex flex-col h-full w-full">
 			<div class="flex-1 flex items-center justify-center h-0 flex-grow sm:m-4">
+				<div
+					v-if="isLoading"
+					class="animate-spin rounded-full h-12 w-12 border-3 border-t-gray-500 border-r-gray-500"
+				/>
 				<img
 					v-if="selectedImage"
 					:src="selectedImage.src"
 					:alt="selectedImage.alt"
-					loading="lazy"
 					class="max-h-full max-w-full"
+					:class="{ hidden: isLoading }"
+					@load="isLoading = false"
 					@click.stop
 				/>
 			</div>

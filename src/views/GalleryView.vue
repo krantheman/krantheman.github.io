@@ -41,11 +41,12 @@ onMounted(async () => {
 
 		let group = album.groups.find((a) => a.id === groupName);
 		if (!group) {
-			group = { id: groupName, images: [] };
+			group = { id: groupName, images: [], thumbnail: null };
 			album.groups.push(group);
 		}
 
-		group.images.push(image);
+		if (fileName === "00.avif") group.thumbnail = image;
+		else group.images.push(image);
 	}
 
 	albums.value = Array.from(albumMap.values()).reverse();
@@ -137,7 +138,7 @@ const getDate = (date) => {
 				@click="openPreview(albumIdx, groupIdx)"
 			>
 				<img
-					:src="group.images[0].src"
+					:src="group.thumbnail.src"
 					:alt="group.id"
 					class="w-full h-full object-cover"
 					loading="lazy"
@@ -147,7 +148,7 @@ const getDate = (date) => {
 				>
 					<h5 class="!my-0 sm:text-base">{{ group.id }}</h5>
 					<span class="text-sm sm:text-xs">
-						{{ group.images.length - 1 }} items
+						{{ group.images.length }} items
 					</span>
 				</div>
 			</div>
