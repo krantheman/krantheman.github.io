@@ -48,7 +48,7 @@ onMounted(async () => {
 		group.images.push(image);
 	}
 
-	albums.value = Array.from(albumMap.values());
+	albums.value = Array.from(albumMap.values()).reverse();
 	checkQueryParams();
 });
 
@@ -123,7 +123,7 @@ const getDate = (date) => {
 </script>
 
 <template>
-	<div v-for="(album, albumIdx) in albums" :key="album.id">
+	<div v-for="(album, albumIdx) in albums" :key="album.id" class="mb-8">
 		<div class="flex items-baseline">
 			<h3 class="!mt-0">{{ album.title }}</h3>
 			<h6 class="ml-2.5">{{ album.date }}</h6>
@@ -142,13 +142,12 @@ const getDate = (date) => {
 					class="w-full h-full object-cover"
 					loading="lazy"
 				/>
-
 				<div
-					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 to-transparent"
+					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/30 hover:from-black/60 to-transparent"
 				>
 					<h5 class="!my-0 sm:text-base">{{ group.id }}</h5>
 					<span class="text-sm sm:text-xs">
-						{{ group.images.length }} items
+						{{ group.images.length - 1 }} items
 					</span>
 				</div>
 			</div>

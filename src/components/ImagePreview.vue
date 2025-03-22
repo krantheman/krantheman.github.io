@@ -148,9 +148,9 @@ const handleTouchEnd = (event) => {
 					@click.stop
 				/>
 			</div>
-			<p v-if="selectedGroup" class="flex justify-center">
+			<p v-if="selectedGroup" class="flex justify-center items-center">
 				{{ selectedGroup.id }}
-				<span class="text-gray-400 font-extralight ml-1">
+				<span class="text-gray-400 font-extralight ml-1 text-sm">
 					({{ previewIdx.image + 1 }}/{{ selectedGroup.images.length }})
 				</span>
 			</p>
