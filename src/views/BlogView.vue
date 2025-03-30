@@ -27,7 +27,7 @@ onMounted(async () => {
 	if (importPath in blogFiles) {
 		const fileContent = await blogFiles[importPath]();
 		htmlContent.value = md.render(fileContent);
-	} else router.replace("/blogs");
+	} else router.replace("/blog");
 });
 </script>
 

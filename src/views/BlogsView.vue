@@ -2,8 +2,8 @@
 const BLOGS = [
 	{
 		title: "Exploring the Depths",
-		date: "1st March, 2025",
-		description: "Or exploring myself? Kidding; former.",
+		date: "1st April, 2025",
+		description: "Or exploring within? Kidding; former.",
 	},
 ];
 </script>
@@ -13,9 +13,9 @@ const BLOGS = [
 		<div v-for="blog in BLOGS">
 			<router-link
 				class="space-y-1 !no-underline"
-				:to="`/blogs/${blog.title.toLowerCase().replace(/ /g, '-')}`"
+				:to="`/blog/${blog.title.toLowerCase().replace(/ /g, '-')}`"
 			>
-				<h3>{{ blog.title }}</h3>
+				<h4>{{ blog.title }}</h4>
 				<h6>{{ blog.date }}</h6>
 				<p class="text-gray-200">{{ blog.description }}</p>
 			</router-link>

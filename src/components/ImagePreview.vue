@@ -143,10 +143,10 @@ const handleTouchEnd = (event) => {
 		</button>
 
 		<div class="flex flex-col h-full w-full">
-			<div class="flex-1 flex items-center justify-center h-0 flex-grow sm:m-4">
+			<div class="flex-1 flex items-center justify-center h-0 flex-grow sm:m-2">
 				<div
 					v-if="isLoading"
-					class="animate-spin rounded-full h-12 w-12 border-3 border-t-gray-500 border-r-gray-500"
+					class="animate-spin rounded-full h-12 w-12 border-3 border-t-gray-500"
 				/>
 				<img
 					v-if="selectedImage"
@@ -158,7 +158,7 @@ const handleTouchEnd = (event) => {
 					@click.stop
 				/>
 			</div>
-			<p v-if="selectedGroup" class="flex justify-center items-center">
+			<p v-if="selectedGroup" class="flex justify-center items-center mb-2">
 				{{ selectedGroup.id }}
 				<span class="text-gray-400 font-extralight ml-1 text-sm">
 					({{ previewIdx.image + 1 }}/{{ selectedGroup.images.length }})

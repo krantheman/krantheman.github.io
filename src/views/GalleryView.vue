@@ -11,7 +11,7 @@ const showPreview = ref(false);
 const previewIdx = reactive({ album: 0, group: 0, image: 0 });
 
 onMounted(async () => {
-	const imageModules = import.meta.glob("@/assets/images/**/*.avif");
+	const imageModules = import.meta.glob("@/assets/images/*/**/*.avif");
 
 	const albumMap = new Map();
 
@@ -144,7 +144,7 @@ const getDate = (date) => {
 					loading="lazy"
 				/>
 				<div
-					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 hover:from-black/50 to-transparent"
+					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 hover:from-black/50 active:from-black/50 to-transparent"
 				>
 					<h5 class="!my-0 sm:text-base">{{ group.id }}</h5>
 					<span class="text-sm sm:text-xs">

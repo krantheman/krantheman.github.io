@@ -50,7 +50,7 @@
 }
 
 a {
-	@apply underline underline-offset-2 decoration-sky-200 hover:text-sky-200;
+	@apply underline underline-offset-2 decoration-sky-200 hover:text-sky-200 active:text-sky-200;
 }
 
 em,
@@ -63,5 +63,5 @@ strong {
 }
 
 blockquote {
-	@apply border-l-4 border-sky-200 pl-4 italic;
+	@apply border-l-3 border-sky-200 pl-4 italic;
 }
