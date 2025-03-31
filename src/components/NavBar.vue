@@ -1,10 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import Github from "@/components/icons/Github.vue";
-import Instagram from "@/components/icons/Instagram.vue";
-import Linkedin from "@/components/icons/Linkedin.vue";
-import Telegram from "@/components/icons/Telegram.vue";
-import Email from "@/components/icons/Email.vue";
+import Socials from "@/components/Socials.vue";
 
 const websiteLinks = [
 	{ name: "Home", path: "/" },
@@ -12,19 +8,11 @@ const websiteLinks = [
 	{ name: "Blog", path: "/blog" },
 	{ name: "Projects", path: "/projects" },
 ];
-
-const socialLinks = [
-	{ icon: Github, href: "https://github.com/krantheman" },
-	{ icon: Linkedin, href: "https://www.linkedin.com/in/akash-tom/" },
-	{ icon: Instagram, href: "https://www.instagram.com/monsieur_le_tom/" },
-	{ icon: Telegram, href: "https://t.me/akash_tom" },
-	{ icon: Email, href: "mailto:me@akashtom.com" },
-];
 </script>
 
 <template>
-	<header>
-		<nav class="h-12 flex items-end">
+	<header class="sticky top-0 bg-[rgb(20,20,20)] z-20 py-4">
+		<nav class="flex items-center">
 			<div class="flex w-full sm:w-auto justify-between space-x-8">
 				<RouterLink
 					v-for="link in websiteLinks"
@@ -38,18 +26,7 @@ const socialLinks = [
 				</RouterLink>
 			</div>
 			<div class="sm:flex items-center space-x-8 ml-auto hidden">
-				<a
-					v-for="link in socialLinks"
-					:href="link.href"
-					target="_blank"
-					rel="noopener"
-					class="hidden sm:block"
-				>
-					<component
-						:is="link.icon"
-						class="h-4.5 w-4.5 fill-gray-200 hover:fill-sky-200 active:fill-sky-200"
-					/>
-				</a>
+				<Socials />
 			</div>
 		</nav>
 	</header>

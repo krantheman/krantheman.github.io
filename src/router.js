@@ -6,28 +6,28 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "Home",
-			component: () => import("./views/HomeView.vue"),
+			component: () => import("@/views/HomeView.vue"),
 		},
 		{
 			path: "/gallery",
 			name: "Gallery",
-			component: () => import("./views/GalleryView.vue"),
+			component: () => import("@/views/GalleryView.vue"),
 		},
 		{
 			path: "/blog",
 			name: "Blogs",
-			component: () => import("./views/BlogsView.vue"),
+			component: () => import("@/views/BlogsView.vue"),
 		},
 		{
 			path: "/blog/:name",
 			name: "Blog",
-			component: () => import("./views/BlogView.vue"),
+			component: () => import("@/views/BlogView.vue"),
 			props: true,
 		},
 		{
 			path: "/projects",
 			name: "Projects",
-			component: () => import("./views/ProjectsView.vue"),
+			component: () => import("@/views/ProjectsView.vue"),
 		},
 	],
 });

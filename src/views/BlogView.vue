@@ -32,5 +32,5 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div v-html="htmlContent" />
+	<div class="mb-8" v-html="htmlContent" />
 </template>

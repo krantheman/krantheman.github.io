@@ -1,6 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @layer base {
+	html,
+	body {
+		font-family: "Roboto", sans-serif;
+		@apply bg-[rgb(20,20,20)] text-gray-200;
+	}
+
 	h1 {
 		@apply text-4xl text-sky-200 font-bold mt-8;
 	}
