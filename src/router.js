@@ -15,13 +15,13 @@ const router = createRouter({
 		},
 		{
 			path: "/blog",
-			name: "Blogs",
-			component: () => import("@/views/BlogsView.vue"),
+			name: "Blog",
+			component: () => import("@/views/BlogView.vue"),
 		},
 		{
 			path: "/blog/:name",
-			name: "Blog",
-			component: () => import("@/views/BlogView.vue"),
+			name: "Post",
+			component: () => import("@/views/PostView.vue"),
 			props: true,
 		},
 		{
@@ -30,6 +30,16 @@ const router = createRouter({
 			component: () => import("@/views/ProjectsView.vue"),
 		},
 	],
+});
+
+router.afterEach((to) => {
+	document.title =
+		to.query.group ||
+		to.params.name
+			?.split("-")
+			.join(" ")
+			.replace(/^\w/, (c) => c.toUpperCase()) ||
+		`Akash's ${to.name}`;
 });
 
 export default router;

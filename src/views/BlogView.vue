@@ -1,36 +1,24 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import markdownIt from "markdown-it";
-
-const { name } = defineProps(["name"]);
-
-const router = useRouter();
-
-const md = markdownIt();
-
-md.renderer.rules.link_open = (tokens, idx, options, _, self) => {
-	tokens[idx].attrSet("target", "_blank");
-	return self.renderToken(tokens, idx, options);
-};
-
-const htmlContent = ref("");
-
-onMounted(async () => {
-	const blogFiles = import.meta.glob("@/content/blogs/*.md", {
-		query: "?raw",
-		import: "default",
-	});
-
-	const importPath = `/src/content/blogs/${name}.md`;
-
-	if (importPath in blogFiles) {
-		const fileContent = await blogFiles[importPath]();
-		htmlContent.value = md.render(fileContent);
-	} else router.replace("/blog");
-});
+const POSTS = [
+	{
+		title: "Exploring the Depths",
+		date: "1st April, 2025",
+		description: "Or exploring within? Kidding; former.",
+	},
+];
 </script>
 
 <template>
-	<div class="mb-8" v-html="htmlContent" />
+	<div class="space-y-8">
+		<div v-for="post in POSTS">
+			<router-link
+				class="space-y-1 !no-underline"
+				:to="`/blog/${post.title.toLowerCase().replace(/ /g, '-')}`"
+			>
+				<h4>{{ post.title }}</h4>
+				<h6>{{ post.date }}</h6>
+				<p class="text-gray-200">{{ post.description }}</p>
+			</router-link>
+		</div>
+	</div>
 </template>
