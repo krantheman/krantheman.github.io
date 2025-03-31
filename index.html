@@ -8,5 +8,13 @@
 	<body>
 		<div id="app" class="sm:w-4xl mx-auto px-4" />
 		<script type="module" src="/src/main.js"></script>
+		<script>
+			(() => {
+				const redirect = sessionStorage.redirect;
+				delete sessionStorage.redirect;
+				if (redirect && redirect !== location.href)
+					history.replaceState(null, null, redirect);
+			})();
+		</script>
 	</body>
 </html>
