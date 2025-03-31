@@ -29,9 +29,13 @@ onMounted(() => {
 	}
 
 	document.addEventListener("keydown", handleKeydown);
+	document.body.classList.add("overflow-hidden");
 });
 
-onBeforeUnmount(() => document.removeEventListener("keydown", handleKeydown));
+onBeforeUnmount(() => {
+	document.removeEventListener("keydown", handleKeydown);
+	document.body.classList.remove("overflow-hidden");
+});
 
 watch(selectedImage, () => {
 	isLoading.value = true;
