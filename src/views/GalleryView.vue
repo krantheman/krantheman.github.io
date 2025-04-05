@@ -10,8 +10,10 @@ const albums = ref([]);
 const showPreview = ref(false);
 const previewIdx = reactive({ album: 0, group: 0, image: 0 });
 
-onMounted(async () => {
-	const imageModules = import.meta.glob("@/assets/images/*/**/*.avif");
+onMounted(() => {
+	const imageModules = import.meta.glob("@/assets/images/*/**/*.avif", {
+		eager: true,
+	});
 
 	const albumMap = new Map();
 
@@ -21,11 +23,9 @@ onMounted(async () => {
 		const groupName = pathParts[pathParts.length - 2];
 		const fileName = pathParts[pathParts.length - 1];
 
-		const imageModule = await imageModules[path]();
-
 		const image = {
-			id: fileName,
-			src: imageModule.default,
+			id: path,
+			src: imageModules[path].default,
 			alt: fileName.split(".")[0],
 		};
 
@@ -140,8 +140,8 @@ const getDate = (date) => {
 				<img
 					:src="group.thumbnail.src"
 					:alt="group.id"
-					class="w-full h-full object-cover"
 					loading="lazy"
+					class="w-full h-full object-cover"
 				/>
 				<div
 					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 hover:from-black/50 active:from-black/50 to-transparent"
