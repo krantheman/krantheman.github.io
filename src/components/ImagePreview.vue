@@ -1,7 +1,7 @@
 <script setup>
+import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 import ChevronLeft from "@/components/icons/ChevronLeft.vue";
 import ChevronRight from "@/components/icons/ChevronRight.vue";
-import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 
 const { albums, previewIdx } = defineProps({
 	albums: {
@@ -143,7 +143,7 @@ const handleTouchEnd = (event) => {
 			:disabled="isFirstImage"
 			:class="{ 'opacity-50 !cursor-default': isFirstImage }"
 		>
-			<ChevronLeft class="h-8 w-8" />
+			<ChevronLeft />
 		</button>
 
 		<div class="flex flex-col h-full w-full">
@@ -177,7 +177,7 @@ const handleTouchEnd = (event) => {
 			:disabled="isLastImage"
 			:class="{ 'opacity-50 !cursor-default': isLastImage }"
 		>
-			<ChevronRight class="h-8 w-8" />
+			<ChevronRight />
 		</button>
 	</div>
 </template>

@@ -4,6 +4,7 @@
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke="currentColor"
+		class="h-8 w-8"
 	>
 		<path
 			stroke-linecap="round"

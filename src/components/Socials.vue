@@ -6,11 +6,19 @@ import Telegram from "@/components/icons/Telegram.vue";
 import Email from "@/components/icons/Email.vue";
 
 const socialLinks = [
-	{ icon: Github, href: "https://github.com/krantheman" },
-	{ icon: Instagram, href: "https://www.instagram.com/monsieur_le_tom/" },
-	{ icon: Linkedin, href: "https://www.linkedin.com/in/akash-tom/" },
-	{ icon: Telegram, href: "https://t.me/akash_tom" },
-	{ icon: Email, href: "mailto:me@akashtom.com" },
+	{ title: "GitHub", icon: Github, href: "https://github.com/krantheman" },
+	{
+		title: "Instagram",
+		icon: Instagram,
+		href: "https://www.instagram.com/monsieur_le_tom/",
+	},
+	{
+		title: "LinkedIn",
+		icon: Linkedin,
+		href: "https://www.linkedin.com/in/akash-tom/",
+	},
+	{ title: "Telegram", icon: Telegram, href: "https://t.me/akash_tom" },
+	{ title: "Email", icon: Email, href: "mailto:me@akashtom.com" },
 ];
 </script>
 
@@ -18,12 +26,15 @@ const socialLinks = [
 	<a
 		v-for="link in socialLinks"
 		:href="link.href"
+		:title="link.title"
 		target="_blank"
 		rel="noopener"
+		class="flex items-center space-x-3 !no-underline group"
 	>
 		<component
 			:is="link.icon"
-			class="h-4.5 w-4.5 fill-gray-200 hover:fill-sky-200 active:fill-sky-200"
+			class="h-5 w-5 fill-gray-200 group-hover:fill-sky-200 group-active:fill-sky-200"
 		/>
+		<span class="sm:hidden">{{ link.title }}</span>
 	</a>
 </template>

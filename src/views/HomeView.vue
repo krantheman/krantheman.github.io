@@ -26,8 +26,8 @@
 				as well.
 			</p>
 			<p>
-				You can find links to all my socials in the navbar/footer. Feel free to
-				reach out for anything!
+				You can find links to all my socials in the navbar. Feel free to reach
+				out for anything!
 			</p>
 		</div>
 	</div>

@@ -39,7 +39,7 @@ router.afterEach((to) => {
 			?.split("-")
 			.join(" ")
 			.replace(/^\w/, (c) => c.toUpperCase()) ||
-		`Akash's ${to.name}`;
+		`Akash's ${to.name || "Home"}`;
 });
 
 export default router;
