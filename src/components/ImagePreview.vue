@@ -30,11 +30,13 @@ onMounted(() => {
 
 	document.addEventListener("keydown", handleKeydown);
 	document.body.classList.add("overflow-hidden");
+	window.addEventListener("popstate", closePreview);
 });
 
 onBeforeUnmount(() => {
 	document.removeEventListener("keydown", handleKeydown);
 	document.body.classList.remove("overflow-hidden");
+	window.removeEventListener("popstate", closePreview);
 });
 
 watch(selectedImage, () => {

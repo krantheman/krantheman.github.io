@@ -83,6 +83,7 @@ const openPreview = (albumIdx, groupIdx, imageIdx = 0) => {
 	previewIdx.image = imageIdx;
 	showPreview.value = true;
 	updateUrl(albumIdx, groupIdx, imageIdx);
+	history.pushState({ preview: true }, "", window.location.href);
 };
 
 const updateUrl = (albumIdx, groupIdx, imageIdx) => {
