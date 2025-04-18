@@ -7,7 +7,7 @@
 		/>
 		<div class="sm:ml-8">
 			<h1 class="sm:mt-0">Hi, I'm Akash</h1>
-			<p>I like programming and travelling—sometimes together!</p>
+			<p>I write code and go places—sometimes together 😎</p>
 			<p>
 				I work as a software developer at an
 				<a href="https://frappe.io/" target="_blank">awesome company</a>, where
@@ -32,3 +32,5 @@
 		</div>
 	</div>
 </template>
+
+<!-- todo: improve gallery/image loading -->

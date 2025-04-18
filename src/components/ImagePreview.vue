@@ -165,7 +165,7 @@ const handleTouchEnd = (event) => {
 				/>
 			</div>
 			<p v-if="selectedGroup" class="flex justify-center items-center mb-2">
-				{{ selectedGroup.id }}
+				{{ selectedGroup.id.split(" ").slice(1).join(" ") }}
 				<span class="text-gray-400 font-extralight ml-1 text-sm">
 					({{ previewIdx.image + 1 }}/{{ selectedGroup.images.length }})
 				</span>

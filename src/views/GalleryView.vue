@@ -147,7 +147,9 @@ const getDate = (date) => {
 				<div
 					class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/20 hover:from-black/50 active:from-black/50 to-transparent"
 				>
-					<h5 class="!my-0 sm:text-base">{{ group.id }}</h5>
+					<h5 class="!my-0 sm:text-base">
+						{{ group.id.split(" ").slice(1).join(" ") }}
+					</h5>
 					<span class="text-sm sm:text-xs">
 						{{ group.images.length }} items
 					</span>
