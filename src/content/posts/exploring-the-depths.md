@@ -18,7 +18,7 @@ The journey from the office to the cave entrance constituted a forty-minute hike
 
 We were finally here. Mawmluh Cave.
 
-![The entrance](/src/assets/images/25-01%20Meghalaya/05%20Onto%20the%20cave/IMG_1331.avif)
+![The entrance](/images/IMG_1331.avif)
 
 ### A Cave Through Time
 
@@ -36,7 +36,7 @@ I won’t delve further into this, but I recommend that you do—it is an [extre
 
 The entrance to the cave was so narrow that I could barely squeeze through. Individuals with even slightly larger dimensions would have a tough time. Once inside, the terrain quickly began shifting, bearing less and less resemblance to the outside world. Strange rock formations jutted out, and crevices of indiscernible depth lay beneath us. There were puddles of water scattered everywhere. The guides helped us navigate, showing us where to place our hands and feet. It reminded me of a sport I had recently taken up—[bouldering](https://en.wikipedia.org/wiki/Bouldering).
 
-![Like bouldering](/src/assets/images/25-01%20Meghalaya/06%20The%20cave/IMG_1378.avif)
+![Like bouldering](/images/IMG_1378.avif)
 
 A few minutes in, the cave became utterly devoid of external light. We turned off our headlamps to experience the darkness firsthand. The phrase _pitch black_ had never been more apt. It is important to note that most of us rarely experience absolute darkness. There is always some trace of light, however faint. But here, opening my eyes felt no different from keeping them shut.
 
@@ -50,7 +50,7 @@ After exploring the Queen's Chamber for a while, we started backtracking. We pas
 
 And so, get on all fours we did. The end not in sight, we began crawling. The terrain was a mix of jagged rock and water-filled craters. Crawling through a three-foot tunnel with _jagged rock and water-filled craters_ is exactly as fun as it sounds. I remember thinking how the guards on my jumpsuit were the only things keeping me from busting my knee.
 
-![The crawl](/src/assets/images/25-01%20Meghalaya/06%20The%20cave/IMG_1440.avif)
+![The crawl](/images/IMG_1440.avif)
 
 After about fifteen minutes of this, we were finally back on our feet. The topography had changed again, and we found ourselves surrounded by slimy puddles of water lined with [moonmilk](https://en.wikipedia.org/wiki/Moonmilk)—a white, creamy, cheese-like speleothem. It was unsettling yet beautiful—like something out of an alien world.
 
