@@ -2,7 +2,7 @@
 const POSTS = [
 	{
 		title: "Exploring the Depths",
-		date: "1st April, 2025",
+		date: "19th April, 2025",
 		description: "Or exploring within? Kidding; former.",
 	},
 ];
