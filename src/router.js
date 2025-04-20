@@ -34,7 +34,7 @@ const router = createRouter({
 
 router.afterEach((to) => {
 	document.title =
-		to.query.group ||
+		to.query?.group?.slice(3) ||
 		to.params.name
 			?.split("-")
 			.join(" ")
