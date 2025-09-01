@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar.vue";
 
 <template>
 	<NavBar />
-	<main class="mt-4 mb-12">
+	<main class="mt-8 mb-12">
 		<RouterView />
 	</main>
 </template>
