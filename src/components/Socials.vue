@@ -33,7 +33,7 @@ const socialLinks = [
 	>
 		<component
 			:is="link.icon"
-			class="h-5 w-5 fill-gray-200 group-hover:fill-sky-200 group-active:fill-sky-200"
+			class="h-5 w-5 fill-gray-200 group-hover:fill-amber-300 group-active:fill-amber-300"
 		/>
 		<span class="sm:hidden">{{ link.title }}</span>
 	</a>

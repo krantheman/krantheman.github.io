@@ -29,7 +29,7 @@ onBeforeUnmount(() =>
 </script>
 
 <template>
-	<header class="sticky top-0 bg-[rgb(20,20,20)] z-20">
+	<header class="sticky top-0 bg-body z-20">
 		<nav class="flex items-center py-4">
 			<div class="flex w-full sm:w-auto justify-between sm:space-x-8">
 				<RouterLink
@@ -43,13 +43,13 @@ onBeforeUnmount(() =>
 					{{ link.name }}
 				</RouterLink>
 				<button
-					class="font-medium cursor-pointer active:text-sky-200 sm:hidden flex items-center gap-1"
+					class="font-medium cursor-pointer active:text-amber-300 sm:hidden flex items-center gap-1"
 					@click.stop="toggleSocials"
 				>
 					Socials
 					<ChevronDown
 						class="transition-transform duration-300"
-						:class="{ 'rotate-[-180deg]': socialsOpen }"
+						:class="{ '-rotate-180': socialsOpen }"
 					/>
 				</button>
 			</div>
@@ -59,7 +59,7 @@ onBeforeUnmount(() =>
 		</nav>
 
 		<div
-			class="sm:hidden fixed left-0 right-0 bg-[rgb(20,20,20)] z-20 flex flex-col space-y-4 px-4 shadow-lg overflow-hidden transition-all duration-300 ease-linear"
+			class="sm:hidden fixed left-0 right-0 bg-body z-20 flex flex-col space-y-4 px-4 shadow-lg overflow-hidden transition-all duration-300 ease-linear"
 			:class="socialsOpen ? 'max-h-80 py-4' : 'max-h-0 py-0'"
 			@click.stop
 		>

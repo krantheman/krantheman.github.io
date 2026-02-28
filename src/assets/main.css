@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
+@theme {
+	--color-body: rgb(20, 20, 20);
+	--color-body2: rgb(40, 40, 40);
+}
+
 @layer base {
 	html,
 	body {
 		font-family: "Roboto", sans-serif;
-		@apply bg-[rgb(20,20,20)] text-gray-200;
+		@apply bg-body text-gray-100;
 	}
 
 	h1 {
-		@apply text-4xl text-sky-200 font-bold mt-8;
+		@apply text-4xl text-amber-300 font-bold mt-8;
 	}
 
 	h2 {
@@ -57,12 +62,12 @@
 }
 
 a {
-	@apply underline underline-offset-2 decoration-sky-200 hover:text-sky-200 active:text-sky-200;
+	@apply underline underline-offset-2 decoration-amber-300 hover:text-amber-300 active:text-amber-300;
 }
 
 em,
 strong {
-	@apply text-sky-200;
+	@apply text-amber-300;
 }
 
 strong {
@@ -70,7 +75,7 @@ strong {
 }
 
 blockquote {
-	@apply border-l-3 border-sky-200 pl-4 italic;
+	@apply border-l-3 border-amber-300 pl-4 italic;
 }
 
 @layer components {
@@ -79,11 +84,11 @@ blockquote {
 	}
 
 	th {
-		@apply py-3 px-6 bg-[rgb(40,40,40)];
+		@apply py-3 px-6 bg-body2;
 	}
 
 	tr {
-		@apply odd:bg-[rgb(20,20,20)] even:bg-[rgb(40,40,40)];
+		@apply odd:bg-body even:bg-body2;
 	}
 
 	td {

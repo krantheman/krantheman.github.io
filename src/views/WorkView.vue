@@ -46,7 +46,7 @@ const WORK = [
 			<a class="space-y-1 no-underline!" :href="project.link" target="_blank">
 				<h4>{{ project.title }}</h4>
 				<h6>{{ project.date }}</h6>
-				<p class="text-gray-200">{{ project.description }}</p>
+				<p class="text-gray-100">{{ project.description }}</p>
 			</a>
 		</div>
 	</div>

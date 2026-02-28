@@ -1,7 +1,7 @@
 <template>
 	<div class="flex items-center sm:items-start flex-col sm:flex-row sm:py-16">
 		<img
-			src="@/assets/images/me.avif"
+			src="@/assets/images/me.jpg"
 			alt="Akash's Photo"
 			class="shrink-0 sm:aspect-square sm:w-1/3 object-cover rounded-md"
 		/>
