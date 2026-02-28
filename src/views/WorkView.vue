@@ -1,5 +1,5 @@
 <script setup>
-const PROJECTS = [
+const WORK = [
 	{
 		title: "Frappe Mail",
 		date: "Nov 2024 - Present",
@@ -42,8 +42,8 @@ const PROJECTS = [
 
 <template>
 	<div class="space-y-8">
-		<div v-for="project in PROJECTS" class="cursor-pointer">
-			<a class="space-y-1 !no-underline" :href="project.link" target="_blank">
+		<div v-for="project in WORK" class="cursor-pointer">
+			<a class="space-y-1 no-underline!" :href="project.link" target="_blank">
 				<h4>{{ project.title }}</h4>
 				<h6>{{ project.date }}</h6>
 				<p class="text-gray-200">{{ project.description }}</p>

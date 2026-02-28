@@ -74,4 +74,4 @@ It was past three when we finally emerged. As you would imagine, we weren't able
 
 &nbsp;
 
-###### Photos from this expedition can be viewed starting [here](https://akashtom.com/gallery?album=25-01+Meghalaya&group=05+Onto+the+cave&image=0).
+###### Photos from this expedition can be viewed starting [here](https://akashtom.com/places?album=25-01+Meghalaya&group=05+Onto+the+cave&image=0).

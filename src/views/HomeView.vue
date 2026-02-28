@@ -19,10 +19,10 @@
 			<p>
 				I made this website primarily out of my disdain for Instagram and how it
 				handled
-				<router-link to="/gallery">my images</router-link>. I figured I could
-				also use it for <router-link to="/blog">writing stuff</router-link> now
+				<router-link to="/places">my images</router-link>. I figured I could
+				also use it for <router-link to="/journal">writing stuff</router-link> now
 				and then. This is <i>not</i> a portfolio, but I've listed some of
-				<router-link to="/projects">my projects</router-link>
+				<router-link to="/work">my work</router-link>
 				as well.
 			</p>
 			<p>
@@ -33,4 +33,4 @@
 	</div>
 </template>
 
-<!-- todo: improve gallery/image loading -->
+<!-- todo: improve places/image loading -->

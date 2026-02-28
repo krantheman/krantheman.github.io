@@ -6,9 +6,9 @@ import ChevronDown from "@/components/icons/ChevronDown.vue";
 
 const websiteLinks = [
 	{ name: "Home", path: "/" },
-	{ name: "Gallery", path: "/gallery" },
-	{ name: "Blog", path: "/blog" },
-	{ name: "Projects", path: "/projects" },
+	{ name: "Places", path: "/places" },
+	{ name: "Journal", path: "/journal" },
+	{ name: "Work", path: "/work" },
 ];
 
 const socialsOpen = ref(false);
