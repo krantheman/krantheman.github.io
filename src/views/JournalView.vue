@@ -18,7 +18,7 @@ const POSTS = [
 <template>
 	<div class="space-y-8">
 		<div v-for="post in POSTS">
-			<router-link class="space-y-1 !no-underline" :to="`/journal/${post.link}`">
+			<router-link class="space-y-1 no-underline!" :to="`/journal/${post.link}`">
 				<h4>{{ post.title }}</h4>
 				<h6>{{ post.date }}</h6>
 				<p class="text-gray-100">{{ post.description }}</p>

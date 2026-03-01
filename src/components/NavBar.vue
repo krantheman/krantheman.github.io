@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { RouterLink } from "vue-router";
 import Socials from "@/components/Socials.vue";
 import ChevronDown from "@/components/icons/ChevronDown.vue";
 
@@ -32,16 +31,16 @@ onBeforeUnmount(() =>
 	<header class="sticky top-0 bg-body z-20">
 		<nav class="flex items-center py-4">
 			<div class="flex w-full sm:w-auto justify-between sm:space-x-8">
-				<RouterLink
+				<router-link
 					v-for="link in websiteLinks"
 					:to="link.path"
 					class="font-medium"
 					:class="{
-						'!no-underline': $route.path.split('/')[1] !== link.path.slice(1),
+						'no-underline!': $route.path.split('/')[1] !== link.path.slice(1),
 					}"
 				>
 					{{ link.name }}
-				</RouterLink>
+				</router-link>
 				<button
 					class="font-medium cursor-pointer active:text-amber-300 sm:hidden flex items-center gap-1"
 					@click.stop="toggleSocials"
