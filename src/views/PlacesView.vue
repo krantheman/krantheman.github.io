@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { placeSubtitles } from "@/data.js";
+import { getDate } from "@/utils.js";
 
 const places = ref([]);
 
@@ -30,27 +31,6 @@ onMounted(() => {
 
 	places.value = Array.from(placeMap.values()).reverse();
 });
-
-const getDate = (date) => {
-	const [year, month] = date.split("-");
-	const monthNames = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
-
-	const monthIndex = parseInt(month, 10) - 1;
-	return `${monthNames[monthIndex]} 20${year}`;
-};
 </script>
 
 <template>
@@ -63,7 +43,7 @@ const getDate = (date) => {
 		>
 			<div class="flex items-baseline">
 				<h3 class="mb-0!">{{ place.title }}</h3>
-				<h6 class="ml-2 my-0!">{{ place.date }}</h6>
+				<h6 class="ml-2 mb-0!">{{ place.date }}</h6>
 			</div>
 			<p v-if="place.subtitle" class="mt-0! mb-3 text-gray-100">
 				{{ place.subtitle }}
