@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 import ChevronLeft from "@/components/icons/ChevronLeft.vue";
 import ChevronRight from "@/components/icons/ChevronRight.vue";
-import { useLQIP } from "@/composables.js";
+import LQIPImage from "@/components/LQIPImage.vue";
 
 const { place, previewIdx } = defineProps({
 	place: {
@@ -19,9 +19,6 @@ const emit = defineEmits(["updateUrl", "close"]);
 
 const selectedAlbum = ref(null);
 const selectedImage = ref(null);
-const imageSrc = computed(() => selectedImage.value?.src || null);
-const imagePath = computed(() => selectedImage.value?.id || null);
-const { currentSrc, aspectRatio, isLoading } = useLQIP(imageSrc, imagePath);
 
 onMounted(() => {
 	if (place?.albums?.length > previewIdx.album) {
@@ -128,51 +125,55 @@ const handleTouchEnd = (event) => {
 
 <template>
 	<div
-		class="fixed inset-0 flex z-50 bg-black"
+		class="fixed inset-0 flex flex-col z-50 bg-black"
 		@click="closePreview"
 		@touchstart="handleTouchStart"
 		@touchend="handleTouchEnd"
 	>
-		<button
-			class="cursor-pointer hidden sm:block ml-4 self-center"
-			@click.stop="prevImage"
-			aria-label="Previous image"
-			:disabled="isFirstImage"
-			:class="{ 'opacity-50 cursor-default!': isFirstImage }"
-		>
-			<ChevronLeft />
-		</button>
-
-		<div class="flex flex-col h-full w-full">
-			<div class="flex-1 flex items-center justify-center h-0 grow sm:m-2 overflow-hidden">
-				<img
-					v-if="currentSrc"
-					:src="currentSrc"
-					:alt="selectedImage?.alt"
-					:style="{ aspectRatio, width: '100%', height: 'auto' }"
-					:class="['max-h-full max-w-full object-contain', { 'blur-sm': isLoading }]"
-					@click.stop
-				/>
-			</div>
-			<p v-if="selectedAlbum" class="flex justify-center items-center mb-2">
-				{{ selectedAlbum.id.split(" ").slice(1).join(" ") }}
-				<span
-					v-if="selectedAlbum.images.length > 0"
-					class="text-gray-400 font-extralight ml-1 text-sm"
-				>
-					({{ previewIdx.image + 1 }}/{{ selectedAlbum.images.length }})
-				</span>
-			</p>
+		<div class="flex-1 flex items-center justify-center p-4 min-h-0">
+			<LQIPImage
+				v-if="selectedImage"
+				:src="selectedImage.src"
+				:original-path="selectedImage.id"
+				:alt="selectedImage.alt"
+				class="w-full h-full flex items-center justify-center"
+				img-class="w-full h-full object-contain"
+				loading="eager"
+				@click.stop
+			/>
 		</div>
 
-		<button
-			class="cursor-pointer hidden sm:block mr-4 self-center"
-			@click.stop="nextImage"
-			aria-label="Next image"
-			:disabled="isLastImage"
-			:class="{ 'opacity-50 cursor-default!': isLastImage }"
+		<div
+			v-if="selectedAlbum"
+			class="flex items-center justify-between p-4 sm:px-6 sm:py-4"
 		>
-			<ChevronRight />
-		</button>
+			<p class="m-0">{{ selectedAlbum.id.split(" ").slice(1).join(" ") }}</p>
+
+			<div class="flex items-center gap-4">
+				<button
+					class="cursor-pointer"
+					@click.stop="prevImage"
+					aria-label="Previous image"
+					:disabled="isFirstImage"
+					:class="{ 'opacity-30 cursor-default!': isFirstImage }"
+				>
+					<ChevronLeft />
+				</button>
+
+				<span class="text-sm">
+					{{ previewIdx.image + 1 }} of {{ selectedAlbum.images.length }}
+				</span>
+
+				<button
+					class="cursor-pointer"
+					@click.stop="nextImage"
+					aria-label="Next image"
+					:disabled="isLastImage"
+					:class="{ 'opacity-30 cursor-default!': isLastImage }"
+				>
+					<ChevronRight />
+				</button>
+			</div>
+		</div>
 	</div>
 </template>

@@ -67,7 +67,7 @@ onMounted(async () => {
 	checkQueryParams();
 });
 
-const checkQueryParams = () => {
+const checkQueryParams = async () => {
 	if (!place.value) return;
 
 	const { album, image } = route.query;
@@ -76,15 +76,20 @@ const checkQueryParams = () => {
 	const albumIdx = place.value.albums.findIndex((a) => a.id === album);
 	if (albumIdx === -1) return;
 
+	const targetAlbum = place.value.albums[albumIdx];
+	await loadAlbumImages(targetAlbum);
+
 	const imageIdx = parseInt(image);
 	if (
 		isNaN(imageIdx) ||
 		imageIdx < 0 ||
-		imageIdx >= place.value.albums[albumIdx].images.length
+		imageIdx >= targetAlbum.images.length
 	)
 		return;
 
-	openPreview(albumIdx, imageIdx);
+	previewIdx.album = albumIdx;
+	previewIdx.image = imageIdx;
+	showPreview.value = true;
 };
 
 watch(() => route.query, checkQueryParams, { immediate: true });
