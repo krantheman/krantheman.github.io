@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 import ChevronLeft from "@/components/icons/ChevronLeft.vue";
 import ChevronRight from "@/components/icons/ChevronRight.vue";
+import { useLQIP } from "@/composables.js";
 
 const { place, previewIdx } = defineProps({
 	place: {
@@ -18,7 +19,9 @@ const emit = defineEmits(["updateUrl", "close"]);
 
 const selectedAlbum = ref(null);
 const selectedImage = ref(null);
-const isLoading = ref(true);
+const imageSrc = computed(() => selectedImage.value?.src || null);
+const imagePath = computed(() => selectedImage.value?.id || null);
+const { currentSrc, aspectRatio, isLoading } = useLQIP(imageSrc, imagePath);
 
 onMounted(() => {
 	if (place?.albums?.length > previewIdx.album) {
@@ -36,10 +39,6 @@ onBeforeUnmount(() => {
 	document.removeEventListener("keydown", handleKeydown);
 	document.body.classList.remove("overflow-hidden");
 	window.removeEventListener("popstate", closePreview);
-});
-
-watch(selectedImage, () => {
-	isLoading.value = true;
 });
 
 watch(
@@ -145,18 +144,13 @@ const handleTouchEnd = (event) => {
 		</button>
 
 		<div class="flex flex-col h-full w-full">
-			<div class="flex-1 flex items-center justify-center h-0 grow sm:m-2">
-				<div
-					v-if="isLoading"
-					class="animate-spin rounded-full h-12 w-12 border-3 border-t-gray-500"
-				/>
+			<div class="flex-1 flex items-center justify-center h-0 grow sm:m-2 overflow-hidden">
 				<img
-					v-if="selectedImage"
-					:src="selectedImage.src"
-					:alt="selectedImage.alt"
-					class="max-h-full max-w-full"
-					:class="{ hidden: isLoading }"
-					@load="isLoading = false"
+					v-if="currentSrc"
+					:src="currentSrc"
+					:alt="selectedImage?.alt"
+					:style="{ aspectRatio, width: '100%', height: 'auto' }"
+					:class="['max-h-full max-w-full object-contain', { 'blur-sm': isLoading }]"
 					@click.stop
 				/>
 			</div>

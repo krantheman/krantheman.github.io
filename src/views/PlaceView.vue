@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ImagePreview from "@/components/ImagePreview.vue";
+import LQIPImage from "@/components/LQIPImage.vue";
 import { getDate } from "@/utils.js";
 import { placeSubtitles } from "@/data.js";
 
@@ -157,8 +158,9 @@ const updateUrl = (albumIdx, imageIdx) => {
 				class="cursor-pointer overflow-hidden rounded-md aspect-3/2 relative group"
 				@click="openPreview(albumIdx)"
 			>
-				<img
+				<LQIPImage
 					:src="album.thumbnail.src"
+					:original-path="album.thumbnail.id"
 					:alt="album.id"
 					loading="lazy"
 					class="w-full h-full object-cover group-hover:opacity-80"

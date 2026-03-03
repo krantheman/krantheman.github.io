@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { placeSubtitles } from "@/data.js";
 import { getDate } from "@/utils.js";
+import LQIPImage from "@/components/LQIPImage.vue";
 
 const places = ref([]);
 
@@ -49,13 +50,12 @@ onMounted(() => {
 				{{ place.subtitle }}
 			</p>
 			<div class="overflow-hidden rounded-md aspect-3/2 relative">
-				<img
+				<LQIPImage
 					v-if="place.thumbnail"
 					:src="place.thumbnail.src"
+					:original-path="place.thumbnail.id"
 					:alt="place.title"
-					loading="lazy"
 					class="w-full h-full object-cover group-hover:opacity-80"
-				/>
 				/>
 			</div>
 		</router-link>
