@@ -151,7 +151,7 @@ const updateUrl = (albumIdx, imageIdx) => {
 <template>
 	<div v-if="place">
 		<div class="flex items-baseline">
-			<h1 class="mb-0!">{{ place.title }}</h1>
+			<h1 class="my-0!">{{ place.title }}</h1>
 			<h6 class="ml-2.5 mb-0!">{{ place.date }}</h6>
 		</div>
 		<p class="mb-8 mt-1">{{ place.subtitle }}</p>

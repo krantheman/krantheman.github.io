@@ -43,7 +43,7 @@ onMounted(() => {
 			:to="`/places/${place.id}`"
 		>
 			<div class="flex items-baseline">
-				<h3 class="mb-0!">{{ place.title }}</h3>
+				<h3 class="my-0!">{{ place.title }}</h3>
 				<h6 class="ml-2 mb-0!">{{ place.date }}</h6>
 			</div>
 			<p v-if="place.subtitle" class="mt-0! mb-3 text-gray-100">
