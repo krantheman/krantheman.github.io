@@ -139,7 +139,6 @@ watch(
 			:src="currentSrc"
 			:alt
 			:loading
-			:style="{ aspectRatio }"
 			:class="[imgClass, ]"
 			@load="handleImageLoad"
 			@error="handleImageError"

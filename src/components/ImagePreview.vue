@@ -130,7 +130,7 @@ const handleTouchEnd = (event) => {
 		@touchstart="handleTouchStart"
 		@touchend="handleTouchEnd"
 	>
-		<div class="flex-1 flex items-center justify-center p-4 min-h-0">
+		<div class="flex-1 flex items-center justify-center p:0 sm:p-4 min-h-0">
 			<LQIPImage
 				v-if="selectedImage"
 				:src="selectedImage.src"

@@ -9,7 +9,8 @@ import me from "@/assets/images/me.jpg";
 			:src="me"
 			original-path="src/assets/images/me.jpg"
 			alt="Akash's Photo"
-			class="shrink-0 sm:aspect-square sm:w-1/3 object-cover rounded-md"
+			img-class="w-full sm:aspect-square object-cover"
+			class="w-full sm:w-1/3 shrink-0 rounded-md"
 		/>
 		<div class="sm:ml-8">
 			<h1 class="sm:mt-0">Hi, I'm Akash</h1>

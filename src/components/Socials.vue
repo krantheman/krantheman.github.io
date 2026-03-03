@@ -29,7 +29,7 @@ const socialLinks = [
 		:title="link.title"
 		target="_blank"
 		rel="noopener"
-		class="flex items-center no-underline! group"
+		class="flex items-center no-underline! group max-sm:space-x-3"
 	>
 		<component
 			:is="link.icon"
