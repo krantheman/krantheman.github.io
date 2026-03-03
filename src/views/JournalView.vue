@@ -1,23 +1,10 @@
 <script setup>
-const POSTS = [
-	{
-		title: "Going Raw",
-		date: "16th August, 2025",
-		description: "It just feels so much better.",
-		link: "going-raw",
-	},
-	{
-		title: "Exploring the Depths",
-		date: "19th April, 2025",
-		description: "Or exploring within? Kidding; former.",
-		link: "exploring-the-depths",
-	},
-];
+import { posts } from "@/data.js";
 </script>
 
 <template>
 	<div class="space-y-8">
-		<div v-for="post in POSTS">
+		<div v-for="post in posts">
 			<router-link class="space-y-1 no-underline!" :to="`/journal/${post.link}`">
 				<h4>{{ post.title }}</h4>
 				<h6>{{ post.date }}</h6>
