@@ -29,12 +29,11 @@ const socialLinks = [
 		:title="link.title"
 		target="_blank"
 		rel="noopener"
-		class="flex items-center no-underline! group max-sm:space-x-3"
+		class="flex items-center no-underline! group"
 	>
 		<component
 			:is="link.icon"
-			class="h-5 w-5 fill-gray-200 group-hover:fill-amber-300 group-active:fill-amber-300"
+			class="h-5.5 w-5.5 fill-gray-400 group-hover:fill-gray-100"
 		/>
-		<span class="sm:hidden">{{ link.title }}</span>
 	</a>
 </template>

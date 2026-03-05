@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -9,7 +9,7 @@
 @layer base {
 	html,
 	body {
-		font-family: "Roboto", sans-serif;
+		font-family: "Outfit", sans-serif;
 		@apply bg-body text-gray-100;
 	}
 
@@ -62,7 +62,7 @@
 }
 
 a {
-	@apply underline underline-offset-2 decoration-amber-300 hover:text-amber-300 active:text-amber-300;
+	@apply underline underline-offset-3 decoration-amber-300 hover:text-amber-300 active:text-amber-300;
 }
 
 em,
