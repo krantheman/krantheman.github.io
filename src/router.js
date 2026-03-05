@@ -54,10 +54,16 @@ router.afterEach((to) => {
 	}
 	// Post page: capitalize title from slug
 	else if (to.params.name) {
+		const stopWords = new Set(["the"]);
 		const postTitle = to.params.name
 			.split("-")
-			.join(" ")
-			.replace(/^\w/, (c) => c.toUpperCase());
+			.map((word, index) => {
+				if (index === 0 || !stopWords.has(word.toLowerCase())) {
+					return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+				}
+				return word.toLowerCase();
+			})
+			.join(" ");
 		titleParts.push(postTitle);
 	}
 	// Other named routes: "Akash's Places"

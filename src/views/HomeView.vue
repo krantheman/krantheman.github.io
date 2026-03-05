@@ -18,9 +18,9 @@ import me from "@/assets/images/me.jpg";
 				<h1 class="sm:mt-0 mb-2 text-gray-100 text-5xl">
 					Hi, I'm <span class="text-amber-300">Akash</span>
 				</h1>
-				<h5 class="text-gray-400 mt-2 mb-8 text-xl font-light">
+				<h4 class="text-gray-400 mt-2 mb-8 font-light">
 					I write code and wander places. Sometimes together.
-				</h5>
+				</h4>
 			</div>
 
 			<p class="mb-8">
