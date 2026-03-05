@@ -10,7 +10,7 @@ import { work } from "@/data.js";
 		:href="project.link"
 		target="_blank"
 	>
-		<h3 class="mt-8">{{ project.title }}</h3>
+		<h2 class="mt-8">{{ project.title }}</h2>
 		<h6>{{ project.date }}</h6>
 		<p class="text-gray-100">{{ project.description }}</p>
 	</a>

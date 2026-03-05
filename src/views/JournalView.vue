@@ -9,7 +9,7 @@ import { posts } from "@/data.js";
 		class="space-y-1 no-underline!"
 		:to="`/journal/${post.link}`"
 	>
-		<h3 class="mt-8">{{ post.title }}</h3>
+		<h2 class="mt-8">{{ post.title }}</h2>
 		<h6>{{ post.date }}</h6>
 		<p class="text-gray-100">{{ post.description }}</p>
 	</router-link>
