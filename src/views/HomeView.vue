@@ -10,7 +10,7 @@ import me from "@/assets/images/me.jpg";
 			:src="me"
 			original-path="src/assets/images/me.jpg"
 			alt="Akash's Photo"
-			img-class="w-full aspect-3/2 sm:aspect-7/8 object-cover"
+			img-class="w-full aspect-3/2 sm:aspect-6/7 object-cover"
 			class="w-full sm:w-1/3 shrink-0 rounded-lg"
 		/>
 		<div class="flex flex-col flex-1 min-w-0">
@@ -19,7 +19,7 @@ import me from "@/assets/images/me.jpg";
 					Hi, I'm <span class="text-amber-300">Akash</span>
 				</h1>
 				<h4 class="text-gray-400 mt-2 mb-8 font-light">
-					I write code and wander places. Sometimes together.
+					I write code and wander places — sometimes together.
 				</h4>
 			</div>
 
@@ -29,11 +29,12 @@ import me from "@/assets/images/me.jpg";
 				currently building an
 				<a href="https://github.com/frappe/mail" target="_blank">
 					open-source email client</a
-				>. I built this website primarily to maintain a digital footprint of my
+				>. I built this website to maintain a digital footprint of my
 				<router-link to="/places">photos</router-link> and
 				<router-link to="/journal">thoughts</router-link>. This is <i>not</i> a
 				portfolio, but I've listed some of my past
-				<router-link to="/work">work</router-link> as well.
+				<router-link to="/work">work</router-link> as well. Feel free to explore
+				👋
 			</p>
 
 			<div class="border-t border-gray-400 pt-6">
