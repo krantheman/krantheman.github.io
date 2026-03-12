@@ -21,12 +21,6 @@ const selectedAlbum = ref(null);
 const selectedImage = ref(null);
 
 onMounted(() => {
-	if (place?.albums?.length > previewIdx.album) {
-		selectedAlbum.value = place.albums[previewIdx.album];
-		if (selectedAlbum.value.images?.length > previewIdx.image)
-			selectedImage.value = selectedAlbum.value.images[previewIdx.image];
-	}
-
 	document.addEventListener("keydown", handleKeydown);
 	document.body.classList.add("overflow-hidden");
 	window.addEventListener("popstate", closePreview);
@@ -52,7 +46,7 @@ watch(
 			}
 		}
 	},
-	{ immediate: false, deep: true },
+	{ immediate: true, deep: true },
 );
 
 const nextImage = () => {

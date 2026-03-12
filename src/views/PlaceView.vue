@@ -29,7 +29,7 @@ onMounted(async () => {
 		const albumName = pathParts[pathParts.length - 2];
 		const fileName = pathParts[pathParts.length - 1];
 
-		if (!albumMap.has(albumName)) {
+		if (!albumMap.has(albumName))
 			albumMap.set(albumName, {
 				id: albumName,
 				images: [],
@@ -37,19 +37,16 @@ onMounted(async () => {
 				thumbnail: null,
 				imagesLoaded: false,
 			});
-		}
 
 		const album = albumMap.get(albumName);
 
-		if (fileName === "00.avif") {
+		if (fileName === "00.avif")
 			thumbnailPromises.push(
 				imageModules[path]().then((mod) => {
 					album.thumbnail = { id: path, src: mod.default, alt: "00" };
 				}),
 			);
-		} else {
-			album.imagePaths.push({ path, fileName, loader: imageModules[path] });
-		}
+		else album.imagePaths.push({ path, fileName, loader: imageModules[path] });
 	}
 
 	await Promise.all(thumbnailPromises);
@@ -80,11 +77,7 @@ const checkQueryParams = async () => {
 	await loadAlbumImages(targetAlbum);
 
 	const imageIdx = parseInt(image);
-	if (
-		isNaN(imageIdx) ||
-		imageIdx < 0 ||
-		imageIdx >= targetAlbum.images.length
-	)
+	if (isNaN(imageIdx) || imageIdx < 0 || imageIdx >= targetAlbum.images.length)
 		return;
 
 	previewIdx.album = albumIdx;

@@ -45,10 +45,8 @@ const aspectRatio = ref(null);
 const findLQIPData = (imgSrc, imgPath) => {
 	if (!imgSrc || typeof imgSrc !== "string") return null;
 
-	// If we have the original path, use it directly for exact matching
 	if (imgPath && typeof imgPath === "string") {
-		// Normalize path: @/assets/images -> src/assets/images
-		const normalizedPath = imgPath.replace("@/", "src/");
+		const normalizedPath = imgPath.replace("/src", "src");
 
 		if (lqipData[normalizedPath]) {
 			return lqipData[normalizedPath];
@@ -139,7 +137,7 @@ watch(
 			:src="currentSrc"
 			:alt
 			:loading
-			:class="[imgClass, ]"
+			:class="imgClass"
 			@load="handleImageLoad"
 			@error="handleImageError"
 		/>
