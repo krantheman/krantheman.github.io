@@ -10,7 +10,7 @@ import me from "@/assets/images/me.jpg";
 			:src="me"
 			original-path="src/assets/images/me.jpg"
 			alt="Akash's Photo"
-			class="w-full sm:w-1/3 shrink-0 rounded-lg aspect-3/2 sm:aspect-6/7 object-cover"
+			class="w-full sm:w-1/3 shrink-0 rounded-lg aspect-3/2 sm:aspect-6/7"
 		/>
 		<div class="flex flex-col flex-1 min-w-0">
 			<div>

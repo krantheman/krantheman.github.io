@@ -66,7 +66,10 @@ const findLQIPData = (imgSrc, imgPath) => {
 	return null;
 };
 
+const loading = ref(true);
+
 const loadImage = (imgSrc, imgPath) => {
+	loading.value = true;
 	if (!imgSrc || typeof imgSrc !== "string") {
 		currentSrc.value = null;
 		actualSrc.value = null;
@@ -103,10 +106,17 @@ watch(
 </script>
 
 <template>
-	<img
-		:src="currentSrc"
-		:alt
+	<div
+		class="overflow-hidden"
 		:class="imageAspect > viewportAspect ? 'w-full h-auto' : 'h-full w-auto'"
 		@click.stop
-	/>
+	>
+		<img
+			:src="currentSrc"
+			:alt="alt"
+			class="h-full w-full object-cover scale-102"
+			:class="[loading ? 'blur-md' : 'transition-all duration-300 ease-in']"
+			@load="loading = false"
+		/>
+	</div>
 </template>
