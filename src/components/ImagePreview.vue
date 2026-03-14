@@ -5,14 +5,8 @@ import ChevronRight from "@/components/icons/ChevronRight.vue";
 import LQIPImage from "@/components/LQIPImage.vue";
 
 const { place, previewIdx } = defineProps({
-	place: {
-		type: Object,
-		required: true,
-	},
-	previewIdx: {
-		type: Object,
-		required: true,
-	},
+	place: { type: Object, required: true },
+	previewIdx: { type: Object, required: true },
 });
 
 const emit = defineEmits(["updateUrl", "close"]);
@@ -22,13 +16,11 @@ const selectedImage = ref(null);
 
 onMounted(() => {
 	document.addEventListener("keydown", handleKeydown);
-	document.body.classList.add("overflow-hidden");
 	window.addEventListener("popstate", closePreview);
 });
 
 onBeforeUnmount(() => {
 	document.removeEventListener("keydown", handleKeydown);
-	document.body.classList.remove("overflow-hidden");
 	window.removeEventListener("popstate", closePreview);
 });
 
@@ -130,10 +122,10 @@ const handleTouchEnd = (event) => {
 				:src="selectedImage.src"
 				:original-path="selectedImage.id"
 				:alt="selectedImage.alt"
-				class="w-full h-full object-contain"
 			/>
 		</div>
 
+		<!-- this affects lqip render (search '57') -->
 		<div
 			v-if="selectedAlbum"
 			class="flex items-center justify-between p-4 sm:px-6 sm:py-4"

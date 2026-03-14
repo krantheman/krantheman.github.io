@@ -1,25 +1,36 @@
 <script setup>
-import { ref, watch } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import lqipData from "@/lqip-data.json";
 
 const { src, originalPath, alt } = defineProps({
-	src: {
-		type: String,
-		required: true,
-	},
-	originalPath: {
-		type: String,
-		default: null,
-	},
-	alt: {
-		type: String,
-		default: "",
-	},
+	src: { type: String, required: true },
+	originalPath: { type: String, default: null },
+	alt: { type: String, default: "" },
 });
 
 const currentSrc = ref(null);
 const placeholderSrc = ref(null);
 const actualSrc = ref(null);
+const width = ref(null);
+const height = ref(null);
+
+const imageAspect = computed(() =>
+	width.value && height.value ? (width.value / height.value).toFixed(3) : null,
+);
+
+const viewportWidth = ref(window.innerWidth);
+const viewportHeight = ref(window.innerHeight);
+const viewportAspect = computed(() =>
+	(viewportWidth.value / (viewportHeight.value - 57)).toFixed(3),
+);
+
+const updateViewport = () => {
+	viewportWidth.value = window.innerWidth;
+	viewportHeight.value = window.innerHeight;
+};
+
+onMounted(() => window.addEventListener("resize", updateViewport));
+onUnmounted(() => window.removeEventListener("resize", updateViewport));
 
 const findLQIPData = (imgSrc, imgPath) => {
 	if (!imgSrc || typeof imgSrc !== "string") return null;
@@ -27,9 +38,7 @@ const findLQIPData = (imgSrc, imgPath) => {
 	if (imgPath && typeof imgPath === "string") {
 		const normalizedPath = imgPath.replace("/src", "src");
 
-		if (lqipData[normalizedPath]) {
-			return lqipData[normalizedPath];
-		}
+		if (lqipData[normalizedPath]) return lqipData[normalizedPath];
 	}
 
 	// Fallback: Try to match by path segments
@@ -43,18 +52,15 @@ const findLQIPData = (imgSrc, imgPath) => {
 		const lqipFilename = pathParts[pathParts.length - 1];
 
 		// Simple filename match
-		if (lqipFilename === srcFilename) {
-			return data;
-		}
+		if (lqipFilename === srcFilename) return data;
 
 		// Try matching by last 2-3 segments of the path
 		const lqipSegments = pathParts.slice(-3).join("/");
 		if (
 			imgSrc.includes(lqipSegments.replace(/\s+/g, "%20")) ||
 			imgSrc.includes(lqipSegments.replace(/\s+/g, "-"))
-		) {
+		)
 			return data;
-		}
 	}
 
 	return null;
@@ -76,10 +82,10 @@ const loadImage = (imgSrc, imgPath) => {
 		placeholderSrc.value = lqip.placeholder;
 		actualSrc.value = imgSrc;
 		currentSrc.value = lqip.placeholder;
+		width.value = lqip.width;
+		height.value = lqip.height;
 		// Swap to actual image after a brief delay to ensure placeholder shows
-		setTimeout(() => {
-			currentSrc.value = imgSrc;
-		}, 0);
+		setTimeout(() => (currentSrc.value = imgSrc), 0);
 	} else {
 		// No LQIP data, load image directly
 		placeholderSrc.value = null;
@@ -97,5 +103,10 @@ watch(
 </script>
 
 <template>
-	<img :src="currentSrc" :alt />
+	<img
+		:src="currentSrc"
+		:alt
+		:class="imageAspect > viewportAspect ? 'w-full h-auto' : 'h-full w-auto'"
+		@click.stop
+	/>
 </template>
