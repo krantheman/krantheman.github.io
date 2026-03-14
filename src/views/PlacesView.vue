@@ -55,7 +55,7 @@ onMounted(() => {
 					:src="place.thumbnail.src"
 					:original-path="place.thumbnail.id"
 					:alt="place.title"
-					class="w-full h-full object-cover group-hover:opacity-80"
+					class="absolute inset-0 w-full h-full object-cover group-hover:opacity-80"
 				/>
 			</div>
 		</router-link>

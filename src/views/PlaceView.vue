@@ -161,7 +161,7 @@ const updateUrl = (albumIdx, imageIdx) => {
 					:original-path="album.thumbnail.id"
 					:alt="album.id"
 					loading="lazy"
-					class="w-full h-full object-cover group-hover:opacity-80"
+					class="absolute inset-0 w-full h-full object-cover group-hover:opacity-80"
 				/>
 				<div class="absolute inset-0 flex flex-col justify-end p-5">
 					<h5 class="my-0! text-shadow">

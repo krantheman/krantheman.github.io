@@ -2,14 +2,7 @@
 import { ref, watch } from "vue";
 import lqipData from "@/lqip-data.json";
 
-const {
-	src,
-	originalPath,
-	alt,
-	class: className,
-	imgClass,
-	loading,
-} = defineProps({
+const { src, originalPath, alt, loading } = defineProps({
 	src: {
 		type: String,
 		required: true,
@@ -21,14 +14,6 @@ const {
 	alt: {
 		type: String,
 		default: "",
-	},
-	class: {
-		type: String,
-		default: "",
-	},
-	imgClass: {
-		type: String,
-		default: "w-full h-full",
 	},
 	loading: {
 		type: String,
@@ -132,14 +117,11 @@ watch(
 </script>
 
 <template>
-	<div :class="['overflow-hidden', className]">
-		<img
-			:src="currentSrc"
-			:alt
-			:loading
-			:class="imgClass"
-			@load="handleImageLoad"
-			@error="handleImageError"
-		/>
-	</div>
+	<img
+		:src="currentSrc"
+		:alt
+		:loading
+		@load="handleImageLoad"
+		@error="handleImageError"
+	/>
 </template>
