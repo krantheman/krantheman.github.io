@@ -109,7 +109,6 @@ watch(
 	<div
 		class="overflow-hidden"
 		:class="imageAspect > viewportAspect ? 'w-full h-auto' : 'h-full w-auto'"
-		@click.stop
 	>
 		<img
 			:src="currentSrc"

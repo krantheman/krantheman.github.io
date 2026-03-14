@@ -36,14 +36,14 @@ onMounted(() => {
 
 <template>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-		<router-link
+		<div
 			v-for="place in places"
 			:key="place.id"
-			class="no-underline! group"
-			:to="`/places/${place.id}`"
+			class="group cursor-pointer"
+			@click="$router.push(`/places/${place.id}`)"
 		>
 			<div class="flex items-baseline">
-				<h2 class="my-0!">{{ place.title }}</h2>
+				<h2 class="my-0! group-hover:text-amber-300">{{ place.title }}</h2>
 				<h6 class="ml-2 mb-0!">{{ place.date }}</h6>
 			</div>
 			<p v-if="place.subtitle" class="mt-0! mb-3 text-gray-100">
@@ -58,6 +58,6 @@ onMounted(() => {
 					class="absolute inset-0 w-full h-full group-hover:opacity-80"
 				/>
 			</div>
-		</router-link>
+		</div>
 	</div>
 </template>

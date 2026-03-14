@@ -122,6 +122,7 @@ const handleTouchEnd = (event) => {
 				:src="selectedImage.src"
 				:original-path="selectedImage.id"
 				:alt="selectedImage.alt"
+				@click.stop
 			/>
 		</div>
 
@@ -129,13 +130,14 @@ const handleTouchEnd = (event) => {
 		<div
 			v-if="selectedAlbum"
 			class="flex items-center justify-between p-4 sm:px-6 sm:py-4"
+			@click.stop
 		>
 			<p class="m-0">{{ selectedAlbum.id.split(" ").slice(1).join(" ") }}</p>
 
 			<div class="flex items-center gap-4">
 				<button
 					class="cursor-pointer"
-					@click.stop="prevImage"
+					@click="prevImage"
 					aria-label="Previous image"
 					:disabled="isFirstImage"
 					:class="{ 'opacity-30 cursor-default!': isFirstImage }"
@@ -145,12 +147,12 @@ const handleTouchEnd = (event) => {
 
 				<span class="text-sm tabular-nums w-12 text-center">
 					{{ previewIdx.image + 1 }} /
-					{{ selectedAlbum?.images?.length ?? "—" }}
+					{{ selectedAlbum?.images?.length || "—" }}
 				</span>
 
 				<button
 					class="cursor-pointer"
-					@click.stop="nextImage"
+					@click="nextImage"
 					aria-label="Next image"
 					:disabled="isLastImage"
 					:class="{ 'opacity-30 cursor-default!': isLastImage }"
