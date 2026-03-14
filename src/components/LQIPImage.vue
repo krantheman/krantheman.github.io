@@ -2,7 +2,7 @@
 import { ref, watch } from "vue";
 import lqipData from "@/lqip-data.json";
 
-const { src, originalPath, alt, loading } = defineProps({
+const { src, originalPath, alt } = defineProps({
 	src: {
 		type: String,
 		required: true,
@@ -15,16 +15,11 @@ const { src, originalPath, alt, loading } = defineProps({
 		type: String,
 		default: "",
 	},
-	loading: {
-		type: String,
-		default: "lazy",
-	},
 });
 
 const currentSrc = ref(null);
 const placeholderSrc = ref(null);
 const actualSrc = ref(null);
-const isLoading = ref(true);
 
 const findLQIPData = (imgSrc, imgPath) => {
 	if (!imgSrc || typeof imgSrc !== "string") return null;
@@ -70,7 +65,6 @@ const loadImage = (imgSrc, imgPath) => {
 		currentSrc.value = null;
 		actualSrc.value = null;
 		placeholderSrc.value = null;
-		isLoading.value = false;
 		return;
 	}
 
@@ -82,7 +76,6 @@ const loadImage = (imgSrc, imgPath) => {
 		placeholderSrc.value = lqip.placeholder;
 		actualSrc.value = imgSrc;
 		currentSrc.value = lqip.placeholder;
-		isLoading.value = true;
 		// Swap to actual image after a brief delay to ensure placeholder shows
 		setTimeout(() => {
 			currentSrc.value = imgSrc;
@@ -92,34 +85,17 @@ const loadImage = (imgSrc, imgPath) => {
 		placeholderSrc.value = null;
 		actualSrc.value = imgSrc;
 		currentSrc.value = imgSrc;
-		isLoading.value = false;
 	}
-};
-
-const handleImageLoad = () => {
-	isLoading.value = false;
-};
-
-const handleImageError = () => {
-	isLoading.value = false;
 };
 
 // Watch for changes in image source and path
 watch(
 	[() => src, () => originalPath],
-	([newSrc, newPath]) => {
-		loadImage(newSrc, newPath);
-	},
+	([newSrc, newPath]) => loadImage(newSrc, newPath),
 	{ immediate: true },
 );
 </script>
 
 <template>
-	<img
-		:src="currentSrc"
-		:alt
-		:loading
-		@load="handleImageLoad"
-		@error="handleImageError"
-	/>
+	<img :src="currentSrc" :alt />
 </template>

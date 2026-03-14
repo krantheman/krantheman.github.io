@@ -131,7 +131,6 @@ const handleTouchEnd = (event) => {
 				:original-path="selectedImage.id"
 				:alt="selectedImage.alt"
 				class="w-full h-full object-contain"
-				loading="eager"
 			/>
 		</div>
 

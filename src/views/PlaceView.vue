@@ -160,7 +160,6 @@ const updateUrl = (albumIdx, imageIdx) => {
 					:src="album.thumbnail.src"
 					:original-path="album.thumbnail.id"
 					:alt="album.id"
-					loading="lazy"
 					class="absolute inset-0 w-full h-full object-cover group-hover:opacity-80"
 				/>
 				<div class="absolute inset-0 flex flex-col justify-end p-5">
