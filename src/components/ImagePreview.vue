@@ -132,7 +132,6 @@ const handleTouchEnd = (event) => {
 				:alt="selectedImage.alt"
 				class="w-full h-full object-contain"
 				loading="eager"
-				@click.stop
 			/>
 		</div>
 
@@ -153,8 +152,9 @@ const handleTouchEnd = (event) => {
 					<ChevronLeft />
 				</button>
 
-				<span class="text-sm">
-					{{ previewIdx.image + 1 }} of {{ selectedAlbum.images.length }}
+				<span class="text-sm tabular-nums w-12 text-center">
+					{{ previewIdx.image + 1 }} /
+					{{ selectedAlbum?.images?.length ?? "—" }}
 				</span>
 
 				<button

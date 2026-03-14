@@ -25,7 +25,6 @@ const currentSrc = ref(null);
 const placeholderSrc = ref(null);
 const actualSrc = ref(null);
 const isLoading = ref(true);
-const aspectRatio = ref(null);
 
 const findLQIPData = (imgSrc, imgPath) => {
 	if (!imgSrc || typeof imgSrc !== "string") return null;
@@ -83,7 +82,6 @@ const loadImage = (imgSrc, imgPath) => {
 		placeholderSrc.value = lqip.placeholder;
 		actualSrc.value = imgSrc;
 		currentSrc.value = lqip.placeholder;
-		aspectRatio.value = lqip.aspectRatio;
 		isLoading.value = true;
 		// Swap to actual image after a brief delay to ensure placeholder shows
 		setTimeout(() => {
