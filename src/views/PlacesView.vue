@@ -43,7 +43,11 @@ onMounted(() => {
 			@click="$router.push(`/places/${place.id}`)"
 		>
 			<div class="flex items-baseline">
-				<h2 class="my-0! group-hover:text-amber-300">{{ place.title }}</h2>
+				<h2
+					class="my-0! group-hover:text-amber-300 group-active:text-amber-300"
+				>
+					{{ place.title }}
+				</h2>
 				<h6 class="ml-2 mb-0!">{{ place.date }}</h6>
 			</div>
 			<p v-if="place.subtitle" class="mt-0! mb-3 text-gray-100">
@@ -55,7 +59,7 @@ onMounted(() => {
 					:src="place.thumbnail.src"
 					:original-path="place.thumbnail.id"
 					:alt="place.title"
-					class="absolute inset-0 w-full h-full group-hover:opacity-80"
+					class="absolute inset-0 w-full h-full group-hover:opacity-80 group-active:opacity-80"
 				/>
 			</div>
 		</div>
